@@ -1,15 +1,15 @@
-export const darkThame = {
+export const darkTheme = {
   bg: "#181818",
   bhLighter: "#202020",
-  test: "white",
+  text: "white",
   testSoft: "#aaaaaa",
   soft: "#373737",
 };
 
-export const darkThame = {
-  bg: "#181818",
-  bhLighter: "#202020",
-  test: "white",
-  testSoft: "#aaaaaa",
-  soft: "#373737",
+export const lightTheme = {
+  bg: "#F9F9F9",
+  bhLighter: "white",
+  text: "black",
+  testSoft: "#606060",
+  soft: "#f5f5f5",
 };

@@ -18,12 +18,21 @@ import { LightMode } from "@mui/icons-material";
 import LiveTvIcon from "@mui/icons-material/LiveTv";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
+
+const Title = styled.h2`
+  font-size: 14px;
+  font-weight:500;
+  color: #aaaaaa;
+  margin-bottom: 10px;
+`
+
+
 const Container = styled.div`
   font-family: sans-serif;
   flex: 1;
-  background-color: #202020;
+  background-color: ${({theme}) => theme.bg};
   height: 100vh;
-  color: white;
+  color: ${({theme}) => theme.text};
   font-size: 14px;
   top: 0;
   position: sticky;
@@ -54,7 +63,8 @@ const Item = styled.div`
 `;
 
 const Hr = styled.hr`
-  margin: 15px 0px border 0.5px solid #373737;
+  margin: 5px 0px;
+ border: 0.5px solid ${({theme}) => theme.soft};
 `;
 
 const Login = styled.div``;
@@ -72,7 +82,7 @@ const Button = styled.button`
   gap: 5px;
 `;
 
-const Main = () => {
+const Main = ({darkMode, setDarkMode}) => {
   return (
     <Container>
       <Wrapper>
@@ -114,8 +124,10 @@ const Main = () => {
             Sign in
           </Button>
         </Login>
+        <Hr/>
+        <Title>Explore</Title>
         <Item>
-          {" "}
+          
           <WhatshotIcon />
           Trending
         </Item>
@@ -140,7 +152,7 @@ const Main = () => {
           <SettingsIcon />
           Settings
         </Item>
-        <Item>
+        <Item onClick={() => setDarkMode(!darkMode)}>
           <LightMode />
           Light Mode
         </Item>
