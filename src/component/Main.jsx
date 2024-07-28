@@ -30,7 +30,7 @@ const Title = styled.h2`
 const Container = styled.div`
   font-family: sans-serif;
   flex: 1;
-  background-color: ${({theme}) => theme.bg};
+  background-color: ${({theme}) => theme.bhLighter};
   height: 100vh;
   color: ${({theme}) => theme.text};
   font-size: 14px;
