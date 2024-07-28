@@ -1,6 +1,4 @@
 import React from "react";
-import "./menu.css";
-// import styled from "styled-components";
 import styled from "styled-components";
 import Youtube from "../img/YouTube.png";
 import HomeIcon from "@mui/icons-material/Home";
@@ -14,9 +12,10 @@ import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import MusicNoteIcon from "@mui/icons-material/MusicNote";
 import WhatshotIcon from "@mui/icons-material/Whatshot";
 import WatchLaterIcon from "@mui/icons-material/WatchLater";
-import { LightMode } from "@mui/icons-material";
+import { DarkMode, LightMode } from "@mui/icons-material";
 import LiveTvIcon from "@mui/icons-material/LiveTv";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { Link } from "react-router-dom";
 
 
 const Title = styled.h2`
@@ -86,10 +85,13 @@ const Main = ({darkMode, setDarkMode}) => {
   return (
     <Container>
       <Wrapper>
+      <Link to='/' style={{textDecoration:"none", color: "inherit"}} >
+
         <Logo>
           <Img src={Youtube} />
           YouTube
         </Logo>
+        </Link>
         <Item>
           {" "}
           <HomeIcon />
@@ -153,8 +155,8 @@ const Main = ({darkMode, setDarkMode}) => {
           Settings
         </Item>
         <Item onClick={() => setDarkMode(!darkMode)}>
-          <LightMode />
-          Light Mode
+          {darkMode?<DarkMode/>:<LightMode />}
+          {darkMode ? "Dark":"Light"} Mode
         </Item>
       </Wrapper>
     </Container>

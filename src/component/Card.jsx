@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import thumbnail from "../img/thumbnail.jpeg";
+import dog from "../img/dog2.jpeg";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   width: 360px;
@@ -48,10 +50,11 @@ const Info = styled.div`
 
 const Card = () => {
   return (
+    <Link to='/video/test' style={{textDecoration:"none", color: "inherit"}} >
     <Container>
       <Image src={thumbnail} />
       <Details>
-        <ChannelImage />
+        <ChannelImage src={dog} />
         <Texts>
           <Title>Video Title</Title>
           <ChannelName>Channel Name</ChannelName>
@@ -59,6 +62,7 @@ const Card = () => {
         </Texts>
       </Details>
     </Container>
+     </Link>
   );
 };
 
