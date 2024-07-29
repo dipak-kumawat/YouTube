@@ -5,6 +5,7 @@ import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import ShareIcon from "@mui/icons-material/Share";
 import LibraryAddIcon from "@mui/icons-material/LibraryAdd";
 import dog from "../img/dog2.jpeg";
+import Comments from "../component/Comments";
 
 const Container = styled.div`
   display: flex;
@@ -61,6 +62,8 @@ const Channel = styled.div`
 const ChannelInfo = styled.div`
 display: flex;
 gap:16px;
+height:50px;
+padding-bottom:3px;
 `;
 const Subscribe = styled.button`
  padding: 10px 20px;
@@ -69,6 +72,7 @@ const Subscribe = styled.button`
  background-color:#cc1a00;
  font-weight:500;
  border:none;
+ cursor:pointer;
  border-radius:3px;
 
 `;
@@ -78,13 +82,14 @@ flex-direction:column;
 
 `;
 const ChannelName = styled.span`
+color: ${({ theme }) => theme.text};
+
 font-weight: 500;
 `;
 const ChannelCounter = styled.span`
 font-size: 12px;
 margin-top: 5px;
 margin-bottom: 20px;
-
 color: ${({ theme }) => theme.textSoft};
 `;
 const Desription = styled.p`
@@ -94,6 +99,8 @@ const Image = styled.img`
 width:50px;
 height:50;
 border-radius:50%;
+margin-left:7px;
+margin-bottom:3px;
 `;
 
 const Video = () => {
@@ -103,7 +110,7 @@ const Video = () => {
         <VideoWrapper>
           <iframe
             width="100%"
-            height="720"
+            height="480"
             src="https://www.youtube.com/embed/9bZkp7q19f0"
             title="YouTube video player"
             frameBorder="0"
@@ -142,13 +149,15 @@ const Video = () => {
               <ChannelCounter>200k Suscriber</ChannelCounter>
               <Desription>
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab
-                minima, repellendus accusantium soluta tempora numquam saepe
-                quis dicta delectus porro.
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab
+                
               </Desription>
             </ChannelDetails>
           </ChannelInfo>
           <Subscribe>Subscribe</Subscribe>
         </Channel>
+        <Hr/>
+        <Comments/>
       </Content>
       <Recommendation>Recommendation</Recommendation>
     </Container>
