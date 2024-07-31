@@ -57,8 +57,11 @@ const Item = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
-  cursor: pointer;
-  padding: 7%.5px 0px;
+  cursor: pointer; 
+  padding: 7.5px 0px;
+  &:hover{
+    background-color: ${({theme}) => theme.soft};
+  }
 `;
 
 const Hr = styled.hr`
@@ -121,10 +124,12 @@ const Main = ({darkMode, setDarkMode}) => {
         <Hr />
         <Login>
           Sing in to like videos, comment, and subscribe.
+        <Link to='signin' style={{textDecoration:'none'}} >
           <Button>
             <AccountCircleIcon />
             Sign in
           </Button>
+        </Link>
         </Login>
         <Hr/>
         <Title>Explore</Title>

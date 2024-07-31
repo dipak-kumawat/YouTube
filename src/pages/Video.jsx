@@ -6,6 +6,10 @@ import ShareIcon from "@mui/icons-material/Share";
 import LibraryAddIcon from "@mui/icons-material/LibraryAdd";
 import dog from "../img/dog2.jpeg";
 import Comments from "../component/Comments";
+import Card from '../component/Card'
+
+
+
 
 const Container = styled.div`
   display: flex;
@@ -159,7 +163,19 @@ const Video = () => {
         <Hr/>
         <Comments/>
       </Content>
-      <Recommendation>Recommendation</Recommendation>
+      <Recommendation>
+        <Card type='sm' />
+        <Card type='sm' />
+        <Card type='sm' />
+        <Card type='sm' />
+        <Card type='sm' />
+        <Card type='sm' />
+        <Card type='sm' />
+        <Card type='sm' />
+        <Card type='sm' />
+        <Card type='sm' />
+        <Card type='sm' />
+      </Recommendation>
     </Container>
   );
 };

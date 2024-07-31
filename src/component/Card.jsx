@@ -5,21 +5,25 @@ import dog from "../img/dog2.jpeg";
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
-  width: 360px;
-  margin-bottom: 45px;
+  width:  ${(props) => (props.type !== "sm" && "360px")};
+  margin-bottom: ${(props) => (props.type === "sm" ? "10px" : "45px")};
   cursor: pointer;
+  gap: 10px;
+  display: ${(props) => props.type === "sm" && "flex"};
 `;
 
 const Image = styled.img`
   width: 100%;
-  height: 202px;
+  height: ${(props) => (props.type === "sm" ? "120px" : "200px")};
   background-color: #999;
+  flex:1;
 `;
 
 const Details = styled.div`
   display: flex;
-  margin-top: 16px;
+  margin-top:  ${(props) => props.type !== 'sm' && '16px'};
   gap: 12px;
+  flex:1;
 `;
 
 const ChannelImage = styled.img`
@@ -27,6 +31,7 @@ const ChannelImage = styled.img`
   height: 36px;
   border-radius: 50%;
   background-color: #999;
+  display: ${(props) => props.type === "sm" && "none"};
 `;
 
 const Texts = styled.div``;
@@ -48,21 +53,21 @@ const Info = styled.div`
   color: ${({ theme }) => theme.textSoft};
 `;
 
-const Card = () => {
+const Card = ({ type }) => {
   return (
-    <Link to='/video/test' style={{textDecoration:"none", color: "inherit"}} >
-    <Container>
-      <Image src={thumbnail} />
-      <Details>
-        <ChannelImage src={dog} />
-        <Texts>
-          <Title>Video Title</Title>
-          <ChannelName>Channel Name</ChannelName>
-          <Info>Video Info 1 day ago</Info>
-        </Texts>
-      </Details>
-    </Container>
-     </Link>
+    <Link to="/video/test" style={{ textDecoration: "none", color: "inherit" }}>
+      <Container type={type}>
+        <Image type={type} src={thumbnail} />
+        <Details type={type}>
+          <ChannelImage type={type} src={dog} />
+          <Texts>
+            <Title>Video Title</Title>
+            <ChannelName>Channel Name</ChannelName>
+            <Info>Video Info 1 day ago</Info>
+          </Texts>
+        </Details>
+      </Container>
+    </Link>
   );
 };
 

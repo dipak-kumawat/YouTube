@@ -17,7 +17,7 @@ const Avataar = styled.img`
 `;
 const Input = styled.div`
   border: none;
-  border-bottom: 1px solid ${({ theme }) => theme.textSoft};
+  border-bottom: 1px solid ${({ theme }) => theme.soft};
   background-color: transparent;
   outline: none;
   padding: 5px;
