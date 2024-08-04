@@ -1,8 +1,5 @@
 import express from 'express'
-import { test } from '../controller/user.js';
-
-const router = express.Router()
-
+import { deleteUser, dislike, getUser, like, subscribe, unsubscribe, update } from '../controller/user.js';
 
 
 export default router;
