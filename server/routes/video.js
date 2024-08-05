@@ -1,5 +1,5 @@
 import express from 'express'
-import { adddVideo, addView, deleteVideo, getByTag, random, search, sub, trend, updateVideo } from '../controller/video.js';
+import { adddVideo, addView, getByTag, getVideo, random, search, sub, trend, updateVideo } from '../controller/video.js';
 import { varifyToken } from '../varifyToken.js';
 
 const router = express.Router()
@@ -7,7 +7,7 @@ const router = express.Router()
 router.post('/',varifyToken , adddVideo)
 router.put('/:id',varifyToken , adddVideo)
 router.delete('/:id',varifyToken , adddVideo)
-router.get('/find/:id' , adddVideo)
+router.get('/find/:id' , getVideo)
 router.put('/view/:id' , addView)
 router.get('/trend' , trend)
 router.get('/random' , random)
