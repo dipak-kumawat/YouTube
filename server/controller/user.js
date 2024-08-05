@@ -1,9 +1,9 @@
 import { createError } from "../error.js";
-import user from "../models/user.js";
+import User from "../models/User.js";
 export const update = async (req, res, next) => {
   if (req.params.id === req.user.id) {
     try {
-      const updatedUser = await user.findByIdAndUpdate(
+      const updatedUser = await User.findByIdAndUpdate(
         req.params.id,
         {
           $set: req.body,
@@ -17,11 +17,10 @@ export const update = async (req, res, next) => {
   }
 };
 
-
 export const deleteUser = async (req, res, next) => {
   if (req.params.id === req.user.id) {
     try {
-      await user.findByIdAndDelete(req.params.id);
+      await User.findByIdAndDelete(req.params.id);
       res.status(200).json("user has been deleted");
     } catch (error) {}
   } else {
@@ -31,37 +30,37 @@ export const deleteUser = async (req, res, next) => {
 
 export const getUser = async (req, res, next) => {
   try {
-    const User = await user.findById(req.params.id);
-    res.status(200).json(User)
+    const user = await User.findById(req.params.id);
+    res.status(200).json(user);
   } catch (error) {
     next(err);
   }
 };
 export const subscribe = async (req, res, next) => {
   try {
-    await user.findByIdAndUpdate(req.user.id,{
-        $push:{suscribedUsers :req.params.id}
-    })
+    await User.findByIdAndUpdate(req.user.id, {
+      $push: { suscribedUsers: req.params.id },
+    });
     await user.findByIdAndUpdate(req.params.id, {
-        $inc:{subscribers: 1}
-    })
-    res.status(200).json("Subscription successfull.")
+      $inc: { subscribers: 1 },
+    });
+    res.status(200).json("Subscription successfull.");
   } catch (error) {
     next(err);
   }
 };
 export const unsubscribe = async (req, res, next) => {
-    try {
-        await user.findByIdAndUpdate(req.user.id,{
-            $pull:{suscribedUsers:req.params.id}
-        })
-        await user.findByIdAndUpdate(req.params.id, {
-            $inc:{subscribers: -1}
-        })
-        res.status(200).json("unSubscription successfull.")
-      } catch (error) {
-        next(err);
-      }
+  try {
+    await User.findByIdAndUpdate(req.user.id, {
+      $pull: { suscribedUsers: req.params.id },
+    });
+    await User.findByIdAndUpdate(req.params.id, {
+      $inc: { subscribers: -1 },
+    });
+    res.status(200).json("unSubscription successfull.");
+  } catch (error) {
+    next(err);
+  }
 };
 export const like = async (req, res, next) => {
   try {
@@ -73,5 +72,5 @@ export const dislike = async (req, res, next) => {
   try {
   } catch (error) {
     next(err);
-  } 
+  }
 };

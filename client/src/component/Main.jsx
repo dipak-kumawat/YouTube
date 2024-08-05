@@ -35,6 +35,7 @@ const Container = styled.div`
   font-size: 14px;
   top: 0;
   position: sticky;
+  scroll-behavior: auto;
 `;
 
 const Wrapper = styled.div`

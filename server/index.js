@@ -13,8 +13,8 @@ dotenv.config();
 const app = express();
 const connect = () => {
   mongoose
-    .connect(process.env.MONGO)
-    .then(() => {
+    .connect(process.env.MONGO)  
+    .then(() => {  
       console.log("connect to db");
     })
     .catch((err) => {
