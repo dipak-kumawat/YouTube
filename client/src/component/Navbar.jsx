@@ -30,12 +30,15 @@ const Search = styled.div`
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 3px;
-
   margin: auto;
 `;
 const Input = styled.input`
   border: none;
   background-color: transparent;
+  width: 100%;
+  &:focus {
+    outline: none;
+  }
 `;
 
 const Button = styled.button`
