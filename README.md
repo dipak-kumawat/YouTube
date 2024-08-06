@@ -57,9 +57,7 @@ To set up the project locally, follow these steps:
 5. **Set up environment variables:**
    Create a `.env` file in the `server` directory and add the following:
    ```env
-   MONGO = mongodb+srv://dipaksk11:dipak@youtube.qytcjz0.mongodb.net/?retryWrites=true&w=majority&appName=Youtube
-   MONGO_DB = "youtube"
-   JWT = "gopikishan"
+
    ```
 
 6. **Start the server:**
