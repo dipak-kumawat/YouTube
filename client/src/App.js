@@ -27,24 +27,24 @@ function App() {
   const [darkMode, setDarkMode] = useState(true);
 
   return (
-    <ThemeProvider theme={darkMode ? lightTheme : darkTheme}>
+    <ThemeProvider theme={ darkMode ? darkTheme : lightTheme }>
       <Container>
         <BrowserRouter >
-        <Main darkMode={darkMode} setDarkMode={setDarkMode} />
-        <Menu>
-          <Navbar />
-          <Wrapper>
-            <Routes>
-              <Route path= "/" >
-               <Route index element= {<Home/>}/>
-               <Route path="signin" element={<SignIn/>}/>
-                <Route path="video">
-                  <Route path=":id" element={<Video/>}/>
-                </Route>
-              </Route >
-            </Routes>
-          </Wrapper>
-        </Menu>
+          <Main darkMode={ darkMode } setDarkMode={ setDarkMode } />
+          <Menu>
+            <Navbar />
+            <Wrapper>
+              <Routes>
+                <Route path="/" >
+                  <Route index element={ <Home /> } />
+                  <Route path="signin" element={ <SignIn /> } />
+                  <Route path="video">
+                    <Route path=":id" element={ <Video /> } />
+                  </Route>
+                </Route >
+              </Routes>
+            </Wrapper>
+          </Menu>
         </BrowserRouter>
       </Container>
     </ThemeProvider>
