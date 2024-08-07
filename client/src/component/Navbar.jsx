@@ -27,9 +27,9 @@ const Search = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 5px;
+  padding:8px 20px;
   border: 1px solid #ccc;
-  border-radius: 3px;
+  border-radius: 20px;
   margin: auto;
 `;
 const Input = styled.input`
@@ -39,6 +39,7 @@ const Input = styled.input`
   &:focus {
     outline: none;
   }
+  color: ${({ theme }) => theme.text};
 `;
 
 const Button = styled.button`
@@ -60,7 +61,7 @@ const Navbar = () => {
       <Wrapper>
         <Search>
           <Input placeholder="Search" />
-          <SearchIcon />
+          <SearchIcon style={{color: `${({ theme }) => theme.text}`}} />
         </Search>
         <Link to="signin" style={{ textDecoration: "none" }}>
           <Button>

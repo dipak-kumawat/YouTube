@@ -34,8 +34,11 @@ const Container = styled.div`
   color: ${({theme}) => theme.text};
   font-size: 14px;
   top: 0;
-  position: sticky;
-  scroll-behavior: auto;
+  position:static;
+  overflow-y: auto;
+  scrollbar-width: none;
+
+
 `;
 
 const Wrapper = styled.div`
@@ -61,6 +64,8 @@ const Item = styled.div`
   cursor: pointer; 
   padding: 7.5px 0px;
   &:hover{
+    border-radius:10px;
+    /* padding:auto 15px; */
     background-color: ${({theme}) => theme.soft};
   }
 `;
