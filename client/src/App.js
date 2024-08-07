@@ -27,7 +27,7 @@ function App() {
   const [darkMode, setDarkMode] = useState(true);
 
   return (
-    <ThemeProvider theme={ darkMode ? darkTheme : lightTheme }>
+    <ThemeProvider theme={ darkMode ? lightTheme :  darkTheme}>
       <Container>
         <BrowserRouter >
           <Main darkMode={ darkMode } setDarkMode={ setDarkMode } />

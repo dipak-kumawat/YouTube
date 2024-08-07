@@ -27,11 +27,13 @@ font-size:300;
 `
 
 const Input = styled.input`
-border:1 px ${({ theme }) => theme.bhLighter} ;
+border:1 px solid ${({ theme }) => theme.bhLighter} ;
 border-radius:3px;
 padding:10px;
 background-color:transparent;
 width:100%;
+color: ${({ theme }) => theme.text};
+
 `
 
 const Button = styled.button`
@@ -48,7 +50,9 @@ color: ${({ theme }) => theme.textSoft};
 const More = styled.button`
 display:flex;
 margin-top:10px;
-font-size:12px;
+border:none;
+background-color:transparent;
+font-size:13px;
 color: ${({ theme }) => theme.textSoft};
 
 `
@@ -57,6 +61,7 @@ const Links = styled.div`
 margin-left:50px;
 `
 const Link = styled.span`
+cursor: pointer;
 margin-left:30px;
 `
 
@@ -69,14 +74,16 @@ const SignIn = () => {
         <Input placeholder="username"/>
         <Input type="password" placeholder="password"/>
         <Button>Sign in</Button>
-        <Title>or</Title>
+        <SubTitle>or</SubTitle>
+        <Title>Sign Up</Title>
+        <SubTitle>to continue to YouTube</SubTitle>
         <Input placeholder="username"/>
         <Input placeholder="email"/>
         <Input type="password" placeholder="password"/>
         <Button>Sign up</Button>
       </Wrapper>
       <More>
-        English(USA)
+        English(USA)   
         <Links>
             <Link>Help</Link>
             <Link>Privacy</Link>
