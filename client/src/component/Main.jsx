@@ -106,14 +106,19 @@ const Main = ({darkMode, setDarkMode}) => {
           <HomeIcon />
           Home
         </Item>
+        <Link to='/trend' style={{textDecoration:"none", color: "inherit"}} >
+
         <Item>
           {" "}
           <ExploreIcon />
           Explore
         </Item>
+         </Link>        
+         <Link to='/subscriptions' style={{textDecoration:"none", color: "inherit"}} >
         <Item>
           <SubscriptionsIcon /> Subscriptions
         </Item>
+         </Link>
         <Hr />
         <Item>
           <VideoLibraryIcon /> Library
