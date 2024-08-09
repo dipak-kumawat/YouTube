@@ -1,5 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
+
+const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
 const Container = styled.div`
   display: flex;
@@ -67,6 +70,7 @@ margin-left:30px;
 
 const SignIn = () => {
   return (
+    <GoogleOAuthProvider clientId={clientId}>
     <Container>
       <Wrapper>
         <Title>Sign in</Title>
@@ -81,6 +85,15 @@ const SignIn = () => {
         <Input placeholder="email"/>
         <Input type="password" placeholder="password"/>
         <Button>Sign up</Button>
+        <SubTitle>or</SubTitle>
+          <GoogleLogin
+            onSuccess={credentialResponse => {
+              console.log(credentialResponse);
+            }}
+            onError={() => {
+              console.log('Login Failed');
+            }}
+          />
       </Wrapper>
       <More>
         English(USA)   
@@ -92,6 +105,7 @@ const SignIn = () => {
 
       </More>
     </Container>
+    </GoogleOAuthProvider>
   );
 };
 
