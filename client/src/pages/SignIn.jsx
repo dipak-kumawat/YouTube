@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import axios from "axios";
+import { loginFailure, loginStart, loginSuccess } from "../redux/userSlice";
+import { useDispatch } from 'react-redux';
+
 
 const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
@@ -70,15 +73,17 @@ const SignIn = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const dispatch = useDispatch()
+  
 
   const handleLogin = async (e) =>{
     e.preventDefault()
+    dispatch(loginStart())
     try {
       const res = await axios.post('/auth/signin', {name, password})
-      console.log(res.data)
+      dispatch(loginSuccess(res.data))
     } catch (error) {
-      
+      dispatch(loginFailure())
     }
   }
 

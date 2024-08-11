@@ -16,29 +16,26 @@ import { DarkMode, LightMode } from "@mui/icons-material";
 import LiveTvIcon from "@mui/icons-material/LiveTv";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { Link } from "react-router-dom";
-
+import { useSelector } from "react-redux";
 
 const Title = styled.h2`
   font-size: 14px;
-  font-weight:500;
+  font-weight: 500;
   color: #aaaaaa;
   margin-bottom: 10px;
-`
-
+`;
 
 const Container = styled.div`
   font-family: sans-serif;
   flex: 1;
-  background-color: ${({theme}) => theme.bhLighter};
+  background-color: ${({ theme }) => theme.bhLighter};
   height: 100vh;
-  color: ${({theme}) => theme.text};
+  color: ${({ theme }) => theme.text};
   font-size: 14px;
   top: 0;
-  position:static;
+  position: static;
   overflow-y: auto;
   scrollbar-width: none;
-
-
 `;
 
 const Wrapper = styled.div`
@@ -61,18 +58,18 @@ const Item = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
-  cursor: pointer; 
+  cursor: pointer;
   padding: 7.5px 0px;
-  &:hover{
-    border-radius:10px;
+  &:hover {
+    border-radius: 10px;
     /* padding:auto 15px; */
-    background-color: ${({theme}) => theme.soft};
+    background-color: ${({ theme }) => theme.soft};
   }
 `;
 
 const Hr = styled.hr`
   margin: 5px 0px;
- border: 0.5px solid ${({theme}) => theme.soft};
+  border: 0.5px solid ${({ theme }) => theme.soft};
 `;
 
 const Login = styled.div``;
@@ -90,35 +87,37 @@ const Button = styled.button`
   gap: 5px;
 `;
 
-const Main = ({darkMode, setDarkMode}) => {
+const Main = ({ darkMode, setDarkMode }) => {
+  const { currentUser } = useSelector((state) => state.user);
+
   return (
     <Container>
       <Wrapper>
-      <Link to='/' style={{textDecoration:"none", color: "inherit"}} >
-
-        <Logo>
-          <Img src={Youtube} />
-          YouTube
-        </Logo>
+        <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+          <Logo>
+            <Img src={Youtube} />
+            YouTube
+          </Logo>
         </Link>
         <Item>
           {" "}
           <HomeIcon />
           Home
         </Item>
-        <Link to='/trend' style={{textDecoration:"none", color: "inherit"}} >
-
-        <Item>
-          {" "}
-          <ExploreIcon />
-          Explore
-        </Item>
-         </Link>        
-         <Link to='/subscriptions' style={{textDecoration:"none", color: "inherit"}} >
-        <Item>
-          <SubscriptionsIcon /> Subscriptions
-        </Item>
-         </Link>
+        <Link to="/trend" style={{ textDecoration: "none", color: "inherit" }}>
+          <Item>
+            {" "}
+            <ExploreIcon />
+            Explore
+          </Item>
+        </Link>
+        <Link
+          to="/subscriptions"
+          style={{ textDecoration: "none", color: "inherit" }}>
+          <Item>
+            <SubscriptionsIcon /> Subscriptions
+          </Item>
+        </Link>
         <Hr />
         <Item>
           <VideoLibraryIcon /> Library
@@ -133,19 +132,22 @@ const Main = ({darkMode, setDarkMode}) => {
           Watch later
         </Item>
         <Hr />
-        <Login>
-          Sing in to like videos, comment, and subscribe.
-        <Link to='signin' style={{textDecoration:'none'}} >
-          <Button>
-            <AccountCircleIcon />
-            Sign in
-          </Button>
-        </Link>
-        </Login>
-        <Hr/>
+        {!currentUser &&
+          <>
+            <Login>
+              Sing in to like videos, comment, and subscribe.
+              <Link to="signin" style={{ textDecoration: "none" }}>
+                <Button>
+                  <AccountCircleIcon />
+                  Sign in
+                </Button>
+              </Link>
+            </Login>
+            <Hr />{" "}
+          </>
+        }
         <Title>Explore</Title>
         <Item>
-          
           <WhatshotIcon />
           Trending
         </Item>
@@ -171,8 +173,8 @@ const Main = ({darkMode, setDarkMode}) => {
           Settings
         </Item>
         <Item onClick={() => setDarkMode(!darkMode)}>
-          {darkMode?<DarkMode/>:<LightMode />}
-          {darkMode ? "Dark":"Light"} Mode
+          {darkMode ? <DarkMode /> : <LightMode />}
+          {darkMode ? "Dark" : "Light"} Mode
         </Item>
       </Wrapper>
     </Container>
