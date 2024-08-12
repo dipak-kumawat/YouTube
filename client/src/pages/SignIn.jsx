@@ -4,8 +4,8 @@ import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { loginFailure, loginStart, loginSuccess } from "../redux/userSlice";
 import { useDispatch } from 'react-redux';
-
-
+import { auth, provider } from "../firebase";
+import { signInWithPopup } from "firebase/auth";
 const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
 const Container = styled.div`
@@ -87,6 +87,13 @@ const SignIn = () => {
     }
   }
 
+  const signwithGoogle =async () =>{
+    signInWithPopup(auth, provider).then((resutl)=>{
+      console.log(resutl)
+    }).catch((error)=> console.error)
+  }
+
+
   return (
     <GoogleOAuthProvider clientId={clientId}>
       <Container>
@@ -119,6 +126,7 @@ const SignIn = () => {
           />
           <Button  >Sign up</Button>
           <SubTitle>or</SubTitle>
+          <Button onClick={signwithGoogle}>signin with Google</Button>
           <GoogleLogin
             onSuccess={(credentialResponse) => {
               console.log(credentialResponse);
