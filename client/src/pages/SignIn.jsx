@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { loginFailure, loginStart, loginSuccess } from "../redux/userSlice";
-import { useDispatch } from 'react-redux';
+import { useDispatch } from "react-redux";
 import { auth, provider } from "../firebase";
 import { signInWithPopup } from "firebase/auth";
 const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
@@ -73,26 +73,39 @@ const SignIn = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const dispatch = useDispatch()
-  
+  const dispatch = useDispatch();
 
-  const handleLogin = async (e) =>{
-    e.preventDefault()
-    dispatch(loginStart())
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    dispatch(loginStart());
     try {
-      const res = await axios.post('/auth/signin', {name, password})
-      dispatch(loginSuccess(res.data))
+      const res = await axios.post("/auth/signin", { name, password });
+      dispatch(loginSuccess(res.data));
     } catch (error) {
-      dispatch(loginFailure())
+      dispatch(loginFailure());
     }
-  }
+  };
 
-  const signwithGoogle =async () =>{
-    signInWithPopup(auth, provider).then((resutl)=>{
-      console.log(resutl)
-    }).catch((error)=> console.error)
-  }
+  const signwithGoogle = async () => {
+    dispatch(loginStart());
 
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        axios
+          .post("/auth/google", {
+            name: result.user.displayName,
+            email: result.user.email,
+            img: result.user.photoURL,
+          })
+          .then((res) => {
+            dispatch(loginSuccess(res.data));
+          })
+          .catch((res) => {
+            dispatch(loginFailure(res.data));
+          });
+      })
+      .catch((error) => console.error);
+  };
 
   return (
     <GoogleOAuthProvider clientId={clientId}>
@@ -111,7 +124,9 @@ const SignIn = () => {
           />
           <Button onClick={handleLogin}>Sign in</Button>
           <SubTitle>or</SubTitle>
-         <Input
+          <Button onClick={signwithGoogle}>signin with Google</Button>
+          <SubTitle>or</SubTitle>
+          <Input
             placeholder="username"
             onChange={(e) => setName(e.target.value)}
           />
@@ -124,9 +139,7 @@ const SignIn = () => {
             placeholder="password"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <Button  >Sign up</Button>
-          <SubTitle>or</SubTitle>
-          <Button onClick={signwithGoogle}>signin with Google</Button>
+          <Button>Sign up</Button>
           <GoogleLogin
             onSuccess={(credentialResponse) => {
               console.log(credentialResponse);
