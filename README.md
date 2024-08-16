@@ -104,7 +104,7 @@ To set up the project locally, follow these steps:
 ## Project Structure
 
 ```
-Agri-Mart/
+YouTube/
 │
 ├── client/                # React frontend
 │   ├── public/            # Public assets
