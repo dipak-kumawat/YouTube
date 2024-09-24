@@ -29,7 +29,7 @@ const Search = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding:8px 20px;
+  padding: 8px 20px;
   border: 1px solid #ccc;
   border-radius: 20px;
   margin: auto;
@@ -59,41 +59,41 @@ const Button = styled.button`
 
 const User = styled.div`
   display: flex;
-  align-items:center;
-  gap:10px;
-  font-weight:500;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
   color: ${({ theme }) => theme.text};
-`
+`;
 const Avatar = styled.img`
   width: 30px;
   height: 30px;
-  border-radius:50%;
-  background-color:#999;
-`
-
-
+  border-radius: 50%;
+  background-color: #999;
+`;
 
 const Navbar = () => {
-  const {currentUser} = useSelector(state=>state.user)
+  const { currentUser } = useSelector((state) => state.user);
   return (
     <Container>
       <Wrapper>
         <Search>
           <Input placeholder="Search" />
-          <SearchIcon style={{color: `${({ theme }) => theme.text}`}} />
+          <SearchIcon style={{ color: `${({ theme }) => theme.text}` }} />
         </Search>
         {currentUser ? (
           <User>
-            <VideoCallOutlined/>
-            <Avatar src={currentUser.img}/>
+            <VideoCallOutlined />
+            <Avatar src={currentUser.img} />
             {currentUser.name}
           </User>
-        ):(<Link to="signin" style={{ textDecoration: "none" }}>
-          <Button>
-            <AccountCircleIcon />
-            Sign in
-          </Button>
-        </Link>)}
+        ) : (
+          <Link to="signin" style={{ textDecoration: "none" }}>
+            <Button>
+              <AccountCircleIcon />
+              Sign in
+            </Button>
+          </Link>
+        )}
       </Wrapper>
     </Container>
   );

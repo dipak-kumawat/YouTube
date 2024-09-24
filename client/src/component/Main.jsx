@@ -132,7 +132,7 @@ const Main = ({ darkMode, setDarkMode }) => {
           Watch later
         </Item>
         <Hr />
-        {!currentUser &&
+        {!currentUser && (
           <>
             <Login>
               Sing in to like videos, comment, and subscribe.
@@ -145,7 +145,7 @@ const Main = ({ darkMode, setDarkMode }) => {
             </Login>
             <Hr />{" "}
           </>
-        }
+        )}
         <Title>Explore</Title>
         <Item>
           <WhatshotIcon />

@@ -13,9 +13,10 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: calc(100vh -56px);
+  height: calc(100vh - 56px);
   color: ${({ theme }) => theme.text};
 `;
+
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
@@ -29,12 +30,12 @@ const Wrapper = styled.div`
 const Title = styled.h1``;
 
 const SubTitle = styled.h2`
-  font-weight: 20px;
-  font-size: 300;
+  font-weight: 300;
+  font-size: 16px;
 `;
 
 const Input = styled.input`
-  border: 1 px solid ${({ theme }) => theme.bhLighter};
+  border: 1px solid ${({ theme }) => theme.bhLighter};
   border-radius: 3px;
   padding: 10px;
   background-color: transparent;
@@ -52,11 +53,9 @@ const Button = styled.button`
   color: ${({ theme }) => theme.textSoft};
 `;
 
-const More = styled.button`
+const More = styled.div`
   display: flex;
   margin-top: 10px;
-  border: none;
-  background-color: transparent;
   font-size: 13px;
   color: ${({ theme }) => theme.textSoft};
 `;
@@ -64,6 +63,7 @@ const More = styled.button`
 const Links = styled.div`
   margin-left: 50px;
 `;
+
 const Link = styled.span`
   cursor: pointer;
   margin-left: 30px;
@@ -100,11 +100,11 @@ const SignIn = () => {
           .then((res) => {
             dispatch(loginSuccess(res.data));
           })
-          .catch((res) => {
-            dispatch(loginFailure(res.data));
+          .catch((error) => {
+            dispatch(loginFailure());
           });
       })
-      .catch((error) => console.error);
+      .catch((error) => console.error(error));
   };
 
   return (
@@ -124,7 +124,7 @@ const SignIn = () => {
           />
           <Button onClick={handleLogin}>Sign in</Button>
           <SubTitle>or</SubTitle>
-          <Button onClick={signwithGoogle}>signin with Google</Button>
+          <Button onClick={signwithGoogle}>Sign in with Google</Button>
           <SubTitle>or</SubTitle>
           <Input
             placeholder="username"
@@ -150,7 +150,7 @@ const SignIn = () => {
           />
         </Wrapper>
         <More>
-          English(USA)
+          English (USA)
           <Links>
             <Link>Help</Link>
             <Link>Privacy</Link>
