@@ -87,24 +87,11 @@ const SignIn = () => {
   };
 
   const signwithGoogle = async () => {
-    dispatch(loginStart());
-
     signInWithPopup(auth, provider)
       .then((result) => {
-        axios
-          .post("/auth/google", {
-            name: result.user.displayName,
-            email: result.user.email,
-            img: result.user.photoURL,
-          })
-          .then((res) => {
-            dispatch(loginSuccess(res.data));
-          })
-          .catch((error) => {
-            dispatch(loginFailure());
-          });
+        console.log(result);
       })
-      .catch((error) => console.error(error));
+      .catch((error) => { console.log("error : ", error)});
   };
 
   return (
@@ -140,14 +127,14 @@ const SignIn = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <Button>Sign up</Button>
-          <GoogleLogin
+          {/* <GoogleLogin
             onSuccess={(credentialResponse) => {
               console.log(credentialResponse);
             }}
             onError={() => {
               console.log("Login Failed");
             }}
-          />
+          /> */}
         </Wrapper>
         <More>
           English (USA)
