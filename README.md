@@ -6,7 +6,7 @@ Youtube clone using React, Node, MongoDB and Firebase. MERN stack app with Redux
 - [Project Overview](#project-overview)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
-- [Installation](#installation)
+- [Installation](#installation) 
 - [Usage](#usage)
 - [Project Structure](#project-structure)
 - [Contributing](#contributing)
